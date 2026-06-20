@@ -1,0 +1,5 @@
+Artificial Intelligence is transforming industries.
+
+Generative AI can create text, images, and code.
+
+RAG combines retrieval with generation.
