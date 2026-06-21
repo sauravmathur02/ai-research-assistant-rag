@@ -2,3 +2,9 @@ streamlit
 python-dotenv
 pypdf
 python-docs
+langchain-text-splitters
+
+sentence-transformers
+chromadb
+
+google-generativeai
