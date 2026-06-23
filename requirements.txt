@@ -1,7 +1,7 @@
 streamlit
 python-dotenv
 pypdf
-python-docs
+python-docx
 langchain-text-splitters
 
 sentence-transformers

@@ -1,0 +1,236 @@
+{
+  "summary": {
+    "total_questions": 10,
+    "successful_runs": 10,
+    "failed_runs": 0,
+    "avg_context_relevance": 0.682,
+    "avg_answer_faithfulness": 0.756,
+    "avg_retrieval_recall": 0.96,
+    "avg_total_latency_s": 9.816,
+    "avg_retrieval_time_s": 0.083,
+    "avg_generation_time_s": 9.733
+  },
+  "results": [
+    {
+      "id": 1,
+      "question": "What is RAG and what are its main stages?",
+      "expected_keywords": [
+        "retrieval",
+        "generation",
+        "ingestion",
+        "vector",
+        "hallucination"
+      ],
+      "answer_excerpt": "Retrieval-Augmented Generation (RAG) is an AI framework designed to improve large language model (LLM) responses by grounding them in retrieved external documents [Source: rag_overview.txt (Chunk 0)].",
+      "sources_retrieved": 1,
+      "context_relevance": 0.667,
+      "answer_faithfulness": 0.683,
+      "retrieval_recall": 1.0,
+      "retrieval_time_s": 0.038,
+      "generation_time_s": 2.763,
+      "total_latency_s": 2.801,
+      "comparison_mode": false,
+      "standalone_query": "What is RAG and what are its main stages?",
+      "error": null
+    },
+    {
+      "id": 2,
+      "question": "How do text embeddings enable semantic search?",
+      "expected_keywords": [
+        "vector",
+        "semantic",
+        "cosine",
+        "similarity",
+        "sentence"
+      ],
+      "answer_excerpt": "[Warning] **Gemini API Error (Quota/Rate Limit Exceeded or Offline)**  I was unable to contact the Gemini API to synthesize an answer. However, I successfully retrieved the most relevant matching text",
+      "sources_retrieved": 10,
+      "context_relevance": 1.0,
+      "answer_faithfulness": 0.849,
+      "retrieval_recall": 1.0,
+      "retrieval_time_s": 0.137,
+      "generation_time_s": 9.844,
+      "total_latency_s": 9.98,
+      "comparison_mode": true,
+      "standalone_query": "How do text embeddings enable semantic search?",
+      "error": null
+    },
+    {
+      "id": 3,
+      "question": "What is ChromaDB and why is it used in RAG systems?",
+      "expected_keywords": [
+        "chromadb",
+        "vector",
+        "embeddings",
+        "metadata",
+        "persistent"
+      ],
+      "answer_excerpt": "[Warning] **Gemini API Error (Quota/Rate Limit Exceeded or Offline)**  I was unable to contact the Gemini API to synthesize an answer. However, I successfully retrieved the most relevant matching text",
+      "sources_retrieved": 2,
+      "context_relevance": 0.5,
+      "answer_faithfulness": 0.558,
+      "retrieval_recall": 1.0,
+      "retrieval_time_s": 0.035,
+      "generation_time_s": 7.17,
+      "total_latency_s": 7.205,
+      "comparison_mode": false,
+      "standalone_query": "What is ChromaDB and why is it used in RAG systems?",
+      "error": null
+    },
+    {
+      "id": 4,
+      "question": "What chunking strategy is used and why is overlap important?",
+      "expected_keywords": [
+        "chunk",
+        "overlap",
+        "600",
+        "split",
+        "context"
+      ],
+      "answer_excerpt": "[Warning] **Gemini API Error (Quota/Rate Limit Exceeded or Offline)**  I was unable to contact the Gemini API to synthesize an answer. However, I successfully retrieved the most relevant matching text",
+      "sources_retrieved": 5,
+      "context_relevance": 0.4,
+      "answer_faithfulness": 0.787,
+      "retrieval_recall": 1.0,
+      "retrieval_time_s": 0.068,
+      "generation_time_s": 7.292,
+      "total_latency_s": 7.359,
+      "comparison_mode": false,
+      "standalone_query": "What chunking strategy is used and why is overlap important?",
+      "error": null
+    },
+    {
+      "id": 5,
+      "question": "How does hybrid reranking work and what are the weights used?",
+      "expected_keywords": [
+        "hybrid",
+        "semantic",
+        "keyword",
+        "0.6",
+        "0.4",
+        "jaccard"
+      ],
+      "answer_excerpt": "[Warning] **Gemini API Error (Quota/Rate Limit Exceeded or Offline)**  I was unable to contact the Gemini API to synthesize an answer. However, I successfully retrieved the most relevant matching text",
+      "sources_retrieved": 5,
+      "context_relevance": 0.5,
+      "answer_faithfulness": 0.766,
+      "retrieval_recall": 1.0,
+      "retrieval_time_s": 0.084,
+      "generation_time_s": 7.717,
+      "total_latency_s": 7.801,
+      "comparison_mode": false,
+      "standalone_query": "How does hybrid reranking work and what are the weights used?",
+      "error": null
+    },
+    {
+      "id": 6,
+      "question": "What happens when comparison mode is activated?",
+      "expected_keywords": [
+        "comparison",
+        "table",
+        "chunks",
+        "documents",
+        "routing"
+      ],
+      "answer_excerpt": "[Warning] **Gemini API Error (Quota/Rate Limit Exceeded or Offline)**  I was unable to contact the Gemini API to synthesize an answer. However, I successfully retrieved the most relevant matching text",
+      "sources_retrieved": 10,
+      "context_relevance": 0.5,
+      "answer_faithfulness": 0.864,
+      "retrieval_recall": 0.8,
+      "retrieval_time_s": 0.164,
+      "generation_time_s": 7.317,
+      "total_latency_s": 7.48,
+      "comparison_mode": true,
+      "standalone_query": "What happens when comparison mode is activated?",
+      "error": null
+    },
+    {
+      "id": 7,
+      "question": "How does the system handle Gemini API rate limit errors?",
+      "expected_keywords": [
+        "retry",
+        "exponential",
+        "backoff",
+        "rate",
+        "resourceexhausted"
+      ],
+      "answer_excerpt": "[Warning] **Gemini API Error (Quota/Rate Limit Exceeded or Offline)**  I was unable to contact the Gemini API to synthesize an answer. However, I successfully retrieved the most relevant matching text",
+      "sources_retrieved": 5,
+      "context_relevance": 0.857,
+      "answer_faithfulness": 0.768,
+      "retrieval_recall": 1.0,
+      "retrieval_time_s": 0.059,
+      "generation_time_s": 6.963,
+      "total_latency_s": 7.023,
+      "comparison_mode": false,
+      "standalone_query": "How does the system handle Gemini API rate limit errors?",
+      "error": null
+    },
+    {
+      "id": 8,
+      "question": "How does the system resolve follow-up questions with pronouns?",
+      "expected_keywords": [
+        "rephrase",
+        "standalone",
+        "history",
+        "pronouns",
+        "context"
+      ],
+      "answer_excerpt": "[Warning] **Gemini API Error (Quota/Rate Limit Exceeded or Offline)**  I was unable to contact the Gemini API to synthesize an answer. However, I successfully retrieved the most relevant matching text",
+      "sources_retrieved": 5,
+      "context_relevance": 1.0,
+      "answer_faithfulness": 0.762,
+      "retrieval_recall": 0.8,
+      "retrieval_time_s": 0.07,
+      "generation_time_s": 7.074,
+      "total_latency_s": 7.143,
+      "comparison_mode": false,
+      "standalone_query": "How does the system resolve follow-up questions with pronouns?",
+      "error": null
+    },
+    {
+      "id": 9,
+      "question": "What document formats are supported and how are they parsed?",
+      "expected_keywords": [
+        "pdf",
+        "docx",
+        "txt",
+        "pypdf",
+        "paragraph"
+      ],
+      "answer_excerpt": "[Warning] **Gemini API Error (Quota/Rate Limit Exceeded or Offline)**  I was unable to contact the Gemini API to synthesize an answer. However, I successfully retrieved the most relevant matching text",
+      "sources_retrieved": 5,
+      "context_relevance": 0.6,
+      "answer_faithfulness": 0.753,
+      "retrieval_recall": 1.0,
+      "retrieval_time_s": 0.081,
+      "generation_time_s": 7.11,
+      "total_latency_s": 7.191,
+      "comparison_mode": false,
+      "standalone_query": "What document formats are supported and how are they parsed?",
+      "error": null
+    },
+    {
+      "id": 10,
+      "question": "What does the system return when the Gemini API is offline?",
+      "expected_keywords": [
+        "fallback",
+        "offline",
+        "chunks",
+        "similarity",
+        "excerpts"
+      ],
+      "answer_excerpt": "[Warning] **Gemini API Error (Quota/Rate Limit Exceeded or Offline)**  I was unable to contact the Gemini API to synthesize an answer. However, I successfully retrieved the most relevant matching text",
+      "sources_retrieved": 5,
+      "context_relevance": 0.8,
+      "answer_faithfulness": 0.768,
+      "retrieval_recall": 1.0,
+      "retrieval_time_s": 0.098,
+      "generation_time_s": 34.077,
+      "total_latency_s": 34.175,
+      "comparison_mode": false,
+      "standalone_query": "What does the system return when the Gemini API is offline?",
+      "error": null
+    }
+  ]
+}

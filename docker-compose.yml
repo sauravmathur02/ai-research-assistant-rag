@@ -1,0 +1,37 @@
+version: '3.8'
+
+# ============================================================
+#  AI Research Assistant — Docker Compose Configuration
+#
+#  for Start:
+#    1. Copy .env.example to .env and add your GEMINI_API_KEY
+#    2. Run: docker-compose up --build
+#    3. Open: http://localhost:8501
+# ============================================================
+
+services:
+  ai-research-assistant:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai-research-assistant
+    ports:
+      - "8501:8501"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - CHROMA_DB_PATH=/app/chroma_db
+      - CHROMA_COLLECTION_NAME=documents
+    volumes:
+      # Named volume ensures ChromaDB index persists across container restarts
+      - chromadb_data:/app/chroma_db
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  chromadb_data:
+    driver: local

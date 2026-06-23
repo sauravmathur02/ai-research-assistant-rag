@@ -1,0 +1,79 @@
+============================================================
+  AI Research Assistant — Evaluation Summary
+============================================================
+
+Total Questions Evaluated : 10
+Successful Runs           : 10
+Failed Runs               : 0
+
+Aggregate Metrics
+----------------------------------------
+Avg Context Relevance     : 0.682
+Avg Answer Faithfulness   : 0.756
+Avg Retrieval Recall      : 0.960
+Avg Retrieval Latency     : 0.083s
+Avg Generation Latency    : 9.733s
+Avg End-to-End Latency    : 9.816s
+
+Per-Question Breakdown
+----------------------------------------
+
+Q1: What is RAG and what are its main stages?
+  Context Relevance   : 0.667
+  Answer Faithfulness : 0.683
+  Retrieval Recall    : 1.000
+  Total Latency       : 2.801s
+
+Q2: How do text embeddings enable semantic search?
+  Context Relevance   : 1.000
+  Answer Faithfulness : 0.849
+  Retrieval Recall    : 1.000
+  Total Latency       : 9.980s
+
+Q3: What is ChromaDB and why is it used in RAG systems?
+  Context Relevance   : 0.500
+  Answer Faithfulness : 0.558
+  Retrieval Recall    : 1.000
+  Total Latency       : 7.205s
+
+Q4: What chunking strategy is used and why is overlap important?
+  Context Relevance   : 0.400
+  Answer Faithfulness : 0.787
+  Retrieval Recall    : 1.000
+  Total Latency       : 7.359s
+
+Q5: How does hybrid reranking work and what are the weights used?
+  Context Relevance   : 0.500
+  Answer Faithfulness : 0.766
+  Retrieval Recall    : 1.000
+  Total Latency       : 7.801s
+
+Q6: What happens when comparison mode is activated?
+  Context Relevance   : 0.500
+  Answer Faithfulness : 0.864
+  Retrieval Recall    : 0.800
+  Total Latency       : 7.480s
+
+Q7: How does the system handle Gemini API rate limit errors?
+  Context Relevance   : 0.857
+  Answer Faithfulness : 0.768
+  Retrieval Recall    : 1.000
+  Total Latency       : 7.023s
+
+Q8: How does the system resolve follow-up questions with pronouns?
+  Context Relevance   : 1.000
+  Answer Faithfulness : 0.762
+  Retrieval Recall    : 0.800
+  Total Latency       : 7.143s
+
+Q9: What document formats are supported and how are they parsed?
+  Context Relevance   : 0.600
+  Answer Faithfulness : 0.753
+  Retrieval Recall    : 1.000
+  Total Latency       : 7.191s
+
+Q10: What does the system return when the Gemini API is offline?
+  Context Relevance   : 0.800
+  Answer Faithfulness : 0.768
+  Retrieval Recall    : 1.000
+  Total Latency       : 34.175s

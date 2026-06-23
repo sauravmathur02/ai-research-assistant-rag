@@ -1,3 +1,7 @@
+import os
+os.environ["CHROMA_DB_PATH"] = "./chroma_db_test"
+os.environ["CHROMA_COLLECTION_NAME"] = "test_documents"
+
 from src.embedding import create_embeddings
 from src.vector_store import store_chunks, search
 
@@ -9,7 +13,7 @@ chunks = [
 
 embeddings = create_embeddings(chunks)
 
-store_chunks(chunks, embeddings)
+store_chunks(chunks, embeddings, source_name="test_doc.txt")
 
 query = "What is generative AI?"
 

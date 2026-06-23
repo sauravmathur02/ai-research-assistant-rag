@@ -3,3 +3,13 @@ venv/
 __pycache__/
 *.pyc
 .streamlit/
+# Vector database folders
+chroma_db/
+chroma_db_test/
+chroma_db_eval/
+# Model cache folders
+.cache/
+# Editor configurations
+.DS_Store
+.vscode/
+.idea/
