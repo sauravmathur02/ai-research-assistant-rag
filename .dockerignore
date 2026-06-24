@@ -1,31 +1,29 @@
-# Virtual Environments
+
 venv/
 .venv/
 env/
 
-# Python caching
+
 **/__pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# Databases & local state files
+
 chroma_db/
 chroma_db_test/
 *.db
 *.log
 
-# Git
+
 .git/
 .gitignore
 
-# IDE & Editor Configs
 .vscode/
 .idea/
 .gemini/
 .DS_Store
 
-# Local secrets & configs
 .env
 .env.local
 Dockerfile
