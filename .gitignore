@@ -1,15 +1,15 @@
 venv/
-.env
 __pycache__/
 *.pyc
+.env
 .streamlit/
-# Vector database folders
 chroma_db/
 chroma_db_test/
 chroma_db_eval/
-# Model cache folders
 .cache/
-# Editor configurations
-.DS_Store
 .vscode/
 .idea/
+.DS_Store
+Thumbs.db
+eval/evaluation_results.json
+eval/evaluation_summary.txt

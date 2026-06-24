@@ -812,7 +812,7 @@ with st.sidebar:
   <div class="sb-logo">🔬</div>
   <div>
     <div class="sb-name">AI Research</div>
-    <div class="sb-sub">AI-Powered Research Assistant</div>
+    <div class="sb-sub">Multi-Document RAG Platform</div>
   </div>
 </div>""",
         unsafe_allow_html=True,
@@ -826,31 +826,31 @@ with st.sidebar:
     st.markdown(
         f"""
 <div class="stat-row">
-  <span class="stat-lbl">🗄️ Database</span>
+  <span class="stat-lbl">🗄️ ChromaDB</span>
   <span class="stat-val"><span class="dot {dot_cls}"></span>{db_status}</span>
 </div>
 <div class="stat-row">
-  <span class="stat-lbl">🤖 AI Model</span>
+  <span class="stat-lbl">🤖 LLM</span>
   <span class="stat-val">Gemini 2.5 Flash</span>
 </div>
 <div class="stat-row">
-  <span class="stat-lbl">⚡ Embedding Engine</span>
+  <span class="stat-lbl">⚡ Embedding Model</span>
   <span class="stat-val">MiniLM-L6-v2</span>
 </div>
 <div class="stat-row">
-  <span class="stat-lbl">🔍 Search Engine</span>
-  <span class="stat-val">Hybrid Retrieval</span>
+  <span class="stat-lbl">🔍 Retrieval Strategy</span>
+  <span class="stat-val">Hybrid Search (Semantic + Keyword)</span>
 </div>""",
         unsafe_allow_html=True,
     )
 
-    st.markdown('<div class="sec-label">Your Library</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sec-label">Knowledge Base</div>', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
     c1.metric("Documents", len(uploaded_docs))
     c2.metric("Chunks", total_chunks_stored)
 
     if uploaded_docs:
-        st.markdown('<div class="sec-label">Indexed Files</div>', unsafe_allow_html=True)
+        st.markdown('<div class="sec-label">Indexed Documents</div>', unsafe_allow_html=True)
         for doc in uploaded_docs:
             icon, _, _, _ = _file_meta(doc)
             st.markdown(
@@ -858,27 +858,15 @@ with st.sidebar:
                 unsafe_allow_html=True,
             )
 
-    if st.session_state.get("last_retrieval_time") is not None:
-        st.markdown('<div class="sec-label">Last Query Metrics</div>', unsafe_allow_html=True)
-        ret_t = st.session_state.last_retrieval_time
-        gen_t = st.session_state.last_generation_time
-        tot_t = st.session_state.last_total_response_time
-        n_src = st.session_state.last_sources_count
-        stats  = st.session_state.get("last_retrieval_stats", {})
-        st.markdown(
-            f"""
-<div class="stat-row"><span class="stat-lbl">Retrieval</span><span class="stat-val">{ret_t:.3f}s</span></div>
-<div class="stat-row"><span class="stat-lbl">Generation</span><span class="stat-val">{gen_t:.3f}s</span></div>
-<div class="stat-row"><span class="stat-lbl">Total</span><span class="stat-val">{tot_t:.3f}s</span></div>
-<div class="stat-row"><span class="stat-lbl">Chunks Used</span><span class="stat-val">{n_src}</span></div>
-<div class="stat-row"><span class="stat-lbl">Docs Involved</span><span class="stat-val">{stats.get('docs_involved_count', 0)}</span></div>""",
-            unsafe_allow_html=True,
-        )
-        if stats.get("comparison_mode"):
-            st.markdown(
-                '<div class="cmp-banner" style="margin-top:0.6rem;font-size:0.76rem;">⚖️ Comparison mode was active</div>',
-                unsafe_allow_html=True,
-            )
+    st.markdown('<div class="sec-label">System Health</div>', unsafe_allow_html=True)
+    st.markdown(
+        f"""
+<div class="stat-row"><span class="stat-lbl" style="color:var(--green);">✓ ChromaDB</span><span class="stat-val" style="color:var(--green);">{'Connected' if total_chunks_stored > 0 else 'Ready'}</span></div>
+<div class="stat-row"><span class="stat-lbl" style="color:var(--green);">✓ Gemini 2.5 Flash</span><span class="stat-val" style="color:var(--green);">Connected</span></div>
+<div class="stat-row"><span class="stat-lbl" style="color:var(--green);">✓ Embedding Model</span><span class="stat-val" style="color:var(--green);">Loaded</span></div>
+<div class="stat-row"><span class="stat-lbl" style="color:var(--green);">✓ Retrieval Pipeline</span><span class="stat-val" style="color:var(--green);">Ready</span></div>""",
+        unsafe_allow_html=True,
+    )
 
     st.markdown("---")
 
@@ -901,7 +889,7 @@ with st.sidebar:
         st.rerun()
 
     st.markdown(
-        '<p style="font-size:0.65rem;color:#334155;text-align:center;margin-top:1.5rem;">AI Research Assistant · RAG Platform</p>',
+        '<p style="font-size:0.65rem;color:#334155;text-align:center;margin-top:1.5rem;">AI Research Assistant · RAG Platform · v1.0</p>',
         unsafe_allow_html=True,
     )
 
@@ -912,7 +900,7 @@ st.markdown(
   <div class="page-hdr-logo">🔬</div>
   <div>
     <div class="page-hdr-t1">AI Research Assistant</div>
-    <div class="page-hdr-t2">AI-Powered Research Assistant &nbsp;·&nbsp; Upload · Analyze · Compare · Summarize</div>
+    <div class="page-hdr-t2">Multi-Document Retrieval-Augmented Generation Platform &nbsp;·&nbsp; Upload · Retrieve · Analyze · Compare · Synthesize</div>
   </div>
 </div>""",
     unsafe_allow_html=True,
@@ -920,7 +908,7 @@ st.markdown(
 
 
 tab_docs, tab_chat, tab_analytics, tab_compare = st.tabs(
-    ["📁  Documents", "💬  Research Chat", "📊  Analytics", "⚖️  Compare"]
+    ["📁  Documents", "💬  Research Assistant", "📊  RAG Analytics", "⚖️  Cross-Document Analysis"]
 )
 
 
@@ -929,9 +917,9 @@ with tab_docs:
     col_up, col_prev = st.columns([1, 1], gap="large")
 
     with col_up:
-        st.markdown("### 1. Upload Documents")
+        st.markdown("### 1. Document Ingestion")
         st.markdown(
-            '<p style="color:var(--t3);font-size:0.82rem;margin-bottom:1rem;">Upload your source knowledge base (PDF, DOCX, TXT).</p>',
+            '<p style="color:var(--t3);font-size:0.82rem;margin-bottom:1rem;">Upload PDF, DOCX, or TXT documents to build your searchable knowledge base.</p>',
             unsafe_allow_html=True,
         )
         uploaded_files = st.file_uploader(
@@ -975,33 +963,34 @@ with tab_docs:
         if uploaded_files:
             st.markdown("### 2. Preview")
             for f in uploaded_files:
-                st.markdown(_file_card_html(f.name, f.size), unsafe_allow_html=True)
-                with st.expander(f"📄 Preview — {f.name}"):
-                    try:
-                        raw = extract_text(f)
-                        st.text_area(
-                            "",
-                            raw[:2000] if raw else "⚠️ No text could be extracted.",
-                            height=160,
-                            key=f"prev_{f.name}",
-                            label_visibility="collapsed",
-                        )
-                    except Exception as exc:
-                        st.error(f"Preview error: {exc}")
+                try:
+                    raw = extract_text(f)
+                    preview_text = (raw[:2000] if raw else "⚠️ No text could be extracted.").replace("<", "&lt;").replace(">", "&gt;")
+                except Exception as exc:
+                    preview_text = f"⚠️ Preview error: {exc}"
+                safe_name = f.name.replace("<", "&lt;").replace(">", "&gt;")
+                st.markdown(
+                    _file_card_html(f.name, f.size) + f"""
+<details class="custom-details">
+  <summary>▶ Preview — {safe_name}</summary>
+  <div class="detail-body" style="max-height:200px;overflow-y:auto;padding:0.75rem 0.9rem;"><pre style="margin:0;font-size:0.78rem;white-space:pre-wrap;word-break:break-word;font-family:'Fira Mono',monospace;">{preview_text}</pre></div>
+</details>""",
+                    unsafe_allow_html=True,
+                )
         else:
             st.markdown(
                 """
 <div class="empty">
   <div class="empty-icon">📂</div>
   <div class="empty-title">No documents selected</div>
-  <div class="empty-desc">Upload files via the uploader to view content previews and proceed to ingestion.</div>
+  <div class="empty-desc">Select PDF, DOCX, or TXT files above to preview their content before indexing into the knowledge base.</div>
 </div>""",
                 unsafe_allow_html=True,
             )
 
     if uploaded_docs:
         st.markdown("---")
-        st.markdown("### Your Library")
+        st.markdown("### Indexed Knowledge Base")
         for doc in uploaded_docs:
             icon, icon_cls, badge_cls, label = _file_meta(doc)
             fc_col, rm_col = st.columns([10, 1])
@@ -1038,8 +1027,8 @@ with tab_chat:
             """
 <div class="empty">
   <div class="empty-icon">📚</div>
-  <div class="empty-title">Library is empty</div>
-  <div class="empty-desc">Ingest your documents in the <b>Documents</b> tab to enable research capabilities.</div>
+  <div class="empty-title">Knowledge base is empty</div>
+  <div class="empty-desc">Upload and index documents in the <b>Documents</b> tab to enable AI-powered research.</div>
 </div>""",
             unsafe_allow_html=True,
         )
@@ -1051,8 +1040,8 @@ with tab_chat:
                     """
 <div class="empty">
   <div class="empty-icon">💬</div>
-  <div class="empty-title">Ready to assist with your research</div>
-  <div class="empty-desc">Your documents are indexed and ready. Ask a question, request a summary, or compare files.</div>
+  <div class="empty-title">Ready to answer questions about your documents</div>
+  <div class="empty-desc">Ask factual questions, request summaries, compare concepts, or analyze information across multiple files.</div>
 </div>""",
                     unsafe_allow_html=True,
                 )
@@ -1064,7 +1053,7 @@ with tab_chat:
                         st.markdown(chat["answer"])
                         if chat.get("sources"):
                             st.markdown(
-                                f'<p style="font-size:0.75rem;color:var(--t3);margin:0.8rem 0 0.4rem 0;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;">📚 {len(chat["sources"])} Retrieved Sources</p>',
+                                f'<p style="font-size:0.72rem;color:var(--t3);margin:0.9rem 0 0.5rem 0;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">📎 {len(chat["sources"])} Source Chunks Retrieved</p>',
                                 unsafe_allow_html=True,
                             )
                             src_html = ""
@@ -1074,7 +1063,7 @@ with tab_chat:
                                 full_text = src["content"].replace("<", "&lt;").replace(">", "&gt;")
                                 src_html += f"""
 <details class="custom-details">
-  <summary>📄 <b>{src['source']}</b>&nbsp; Chunk #{src['chunk_index']} &nbsp;<span class="sim-badge {sim_cls}">{sim}% match</span></summary>
+  <summary>📄 <b>{src['source']}</b> &nbsp;<span style="color:var(--t4);font-weight:400;">Chunk #{src['chunk_index']}</span> &nbsp;<span class="sim-badge {sim_cls}">{sim}% relevance</span></summary>
   <div class="detail-body">{full_text}</div>
 </details>"""
                             st.markdown(src_html, unsafe_allow_html=True)
@@ -1161,9 +1150,9 @@ with tab_chat:
 
 with tab_analytics:
 
-    st.markdown("### Insights Dashboard")
+    st.markdown("### RAG Analytics Dashboard")
     st.markdown(
-        '<p style="color:var(--t3);font-size:0.83rem;margin-bottom:1.25rem;margin-top:-0.4rem;">Track performance and understand how your queries are processed.</p>',
+        '<p style="color:var(--t3);font-size:0.83rem;margin-bottom:1.25rem;margin-top:-0.4rem;">Monitor retrieval performance, response latency, document usage, and source attribution statistics.</p>',
         unsafe_allow_html=True,
     )
 
@@ -1172,8 +1161,8 @@ with tab_analytics:
             """
 <div class="empty">
   <div class="empty-icon">📊</div>
-  <div class="empty-title">No activity yet</div>
-  <div class="empty-desc">Ask a question in the Research Chat tab and your performance insights will appear here.</div>
+  <div class="empty-title">No queries recorded yet</div>
+  <div class="empty-desc">Ask a question in the <b>Research Assistant</b> tab — retrieval and generation metrics will populate here automatically.</div>
 </div>""",
             unsafe_allow_html=True,
         )
@@ -1186,15 +1175,15 @@ with tab_analytics:
 
         k1, k2, k3, k4, k5 = st.columns(5)
         with k1:
-            st.markdown(_kpi("⚡", "Search Speed", f"{ret_t:.3f}", "seconds"), unsafe_allow_html=True)
+            st.markdown(_kpi("⚡", "Retrieval Time", f"{ret_t:.3f}", "seconds"), unsafe_allow_html=True)
         with k2:
-            st.markdown(_kpi("🤖", "Response Time", f"{gen_t:.3f}", "seconds"), unsafe_allow_html=True)
+            st.markdown(_kpi("🤖", "Generation Time", f"{gen_t:.3f}", "seconds"), unsafe_allow_html=True)
         with k3:
-            st.markdown(_kpi("🕐", "Total Time", f"{tot_t:.3f}", "seconds"), unsafe_allow_html=True)
+            st.markdown(_kpi("🕐", "End-to-End Latency", f"{tot_t:.3f}", "seconds"), unsafe_allow_html=True)
         with k4:
-            st.markdown(_kpi("📝", "Passages Found", str(n_src), "results"), unsafe_allow_html=True)
+            st.markdown(_kpi("📝", "Retrieved Chunks", str(n_src), "passages"), unsafe_allow_html=True)
         with k5:
-            st.markdown(_kpi("📂", "Documents Used", str(stats.get("docs_involved_count", 0)), "files"), unsafe_allow_html=True)
+            st.markdown(_kpi("📂", "Documents Referenced", str(stats.get("docs_involved_count", 0)), "files"), unsafe_allow_html=True)
 
         st.markdown("<br>", unsafe_allow_html=True)
 
@@ -1213,13 +1202,13 @@ with tab_analytics:
                 st.markdown("**Resolved Question**")
                 st.info(st.session_state.last_standalone_query)
 
-            st.markdown("**Passages Used Per Document**")
+            st.markdown("**Retrieved Chunks Per Document**")
             cpd = stats.get("chunks_per_doc", {})
             if cpd:
                 for doc, cnt in cpd.items():
                     pct = int(cnt / n_src * 100) if n_src else 0
                     st.markdown(
-                        f'<div class="stat-row"><span class="stat-lbl">{doc}</span><span class="stat-val">{cnt} passage(s) &nbsp;<span style="color:var(--t3);font-weight:400;">({pct}%)</span></span></div>',
+                        f'<div class="stat-row"><span class="stat-lbl">{doc}</span><span class="stat-val">{cnt} chunk(s) &nbsp;<span style="color:var(--t3);font-weight:400;">({pct}%)</span></span></div>',
                         unsafe_allow_html=True,
                     )
             else:
@@ -1239,18 +1228,18 @@ with tab_analytics:
                 f"""
 <div class="stat-row"><span class="stat-lbl">Questions Asked</span><span class="stat-val">{len(st.session_state.chat_history)}</span></div>
 <div class="stat-row"><span class="stat-lbl">Documents in Library</span><span class="stat-val">{len(uploaded_docs)}</span></div>
-<div class="stat-row"><span class="stat-lbl">Total Passages Indexed</span><span class="stat-val">{total_chunks_stored}</span></div>
+<div class="stat-row"><span class="stat-lbl">Total Chunks Indexed</span><span class="stat-val">{total_chunks_stored}</span></div>
 <div class="stat-row"><span class="stat-lbl">Embedding Model</span><span class="stat-val">MiniLM-L6-v2</span></div>
-<div class="stat-row"><span class="stat-lbl">Search Strategy</span><span class="stat-val">Hybrid Retrieval</span></div>""",
+<div class="stat-row"><span class="stat-lbl">Retrieval Strategy</span><span class="stat-val">Hybrid Search (Semantic + Keyword)</span></div>""",
                 unsafe_allow_html=True,
             )
 
 
 with tab_compare:
 
-    st.markdown("### ⚖️ Compare Documents")
+    st.markdown("### ⚖️ Cross-Document Analysis")
     st.markdown(
-        '<p style="color:var(--t2);font-size:0.85rem;margin-bottom:1.25rem;">Easily compare multiple documents to understand key similarities, differences, and insights.</p>',
+        '<p style="color:var(--t3);font-size:0.83rem;margin-bottom:1.25rem;margin-top:-0.4rem;">Retrieve and synthesize information across multiple documents. Automatically detects comparison intent and applies partitioned multi-document retrieval.</p>',
         unsafe_allow_html=True,
     )
 
@@ -1260,29 +1249,29 @@ with tab_compare:
         st.markdown(
             """
 <div class="feat-card">
-  <div class="feat-title">Comparison Features</div>
+  <div class="feat-title">Analysis Capabilities</div>
   <div style="margin-top:0.5rem;">
-    <div class="stat-row"><span class="stat-lbl">✅ Compare key findings</span></div>
-    <div class="stat-row"><span class="stat-lbl">✅ Compare methodologies</span></div>
-    <div class="stat-row"><span class="stat-lbl">✅ Compare conclusions</span></div>
-    <div class="stat-row"><span class="stat-lbl">✅ Identify similarities</span></div>
-    <div class="stat-row"><span class="stat-lbl">✅ Identify differences</span></div>
-    <div class="stat-row"><span class="stat-lbl">✅ Generate structured summaries</span></div>
+    <div class="stat-row"><span class="stat-lbl">✓ Compare key findings across documents</span></div>
+    <div class="stat-row"><span class="stat-lbl">✓ Compare methodologies and approaches</span></div>
+    <div class="stat-row"><span class="stat-lbl">✓ Compare conclusions and outcomes</span></div>
+    <div class="stat-row"><span class="stat-lbl">✓ Identify thematic similarities</span></div>
+    <div class="stat-row"><span class="stat-lbl">✓ Identify substantive differences</span></div>
+    <div class="stat-row"><span class="stat-lbl">✓ Generate structured comparison tables</span></div>
   </div>
 </div>""",
             unsafe_allow_html=True,
         )
 
     with query_col:
-        st.markdown("**Ask a Comparison Question**")
+        st.markdown("**Submit a Comparison Query**")
 
         if not st.session_state.documents_processed:
             st.markdown(
                 """
 <div class="empty" style="padding:1.5rem;">
   <div class="empty-icon">📚</div>
-  <div class="empty-title">Add documents first</div>
-  <div class="empty-desc">Upload at least 2 documents in the Documents tab to start comparing them.</div>
+  <div class="empty-title">Knowledge base is empty</div>
+  <div class="empty-desc">Index at least two documents in the <b>Documents</b> tab to enable cross-document analysis.</div>
 </div>""",
                 unsafe_allow_html=True,
             )
@@ -1345,18 +1334,21 @@ with tab_compare:
                                 st.info("ℹ️ Comparison mode was not detected. Try adding 'compare', 'difference', or 'versus' to your query.")
 
                             st.markdown("---")
-                            st.markdown("#### Comparison Result")
+                            st.markdown("#### Analysis Result")
                             st.markdown(answer)
 
                             if sources:
                                 st.markdown(
-                                    f'<p style="font-size:0.75rem;color:var(--t3);margin:0.9rem 0 0.4rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;">📚 {len(sources)} Retrieved Sources</p>',
+                                    f'<p style="font-size:0.72rem;color:var(--t3);margin:0.9rem 0 0.5rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">📎 {len(sources)} Source Chunks Retrieved</p>',
                                     unsafe_allow_html=True,
                                 )
                                 for src in sources:
                                     st.markdown(_source_card(src), unsafe_allow_html=True)
-                                    with st.expander(f"Full text — {src['source']} (Chunk #{src['chunk_index']})"):
-                                        st.markdown(src["content"])
+                                    full_src_text = src["content"].replace("<", "&lt;").replace(">", "&gt;")
+                                    st.markdown(
+                                        f'<details class="custom-details"><summary>▶ Full text — {src["source"]} (Chunk #{src["chunk_index"]})</summary><div class="detail-body" style="max-height:200px;overflow-y:auto;"><pre style="margin:0;font-size:0.78rem;white-space:pre-wrap;word-break:break-word;">{full_src_text}</pre></div></details>',
+                                        unsafe_allow_html=True,
+                                    )
 
                         except ResourceExhausted:
                             st.error("⚠️ Gemini API quota exceeded. Please wait a few seconds and retry.")
