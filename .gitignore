@@ -13,3 +13,4 @@ chroma_db_eval/
 Thumbs.db
 eval/evaluation_results.json
 eval/evaluation_summary.txt
+TECHNICAL_REPORT.md
